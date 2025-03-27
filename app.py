@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-car_data = pd.read_csv("/Users/cesardudleycastellanosnieto/Desktop/TT/sprint_7/sprint_7_proyect/vehicles_us.csv")  # subir una carpeta porque el archivo está en la raíz del proyecto
+car_data = pd.read_csv("vehicles_us.csv")
 st.header("Análisis de vehículos en venta en E.U.A")
 
 hist_button = st.button('Construir histograma') # crear un botón
@@ -22,9 +22,9 @@ build_disp = st.checkbox('Mostrar gráfico de dispersión')
 if build_hist:
     st.write("Histograma de odómetro")
     fig_hist = px.histogram(car_data, x="odometer")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig_hist, use_container_width=True)
 
 if build_disp:
     st.write("Dispersión entre odómetro y precio")
     fig_disp = px.scatter(car_data, x="odometer", y="price")
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig_disp, use_container_width=True)
